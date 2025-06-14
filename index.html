@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I miei colori</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="navbar-path">
+      <span class="menu-btn active">intro</span>
+      <span class="divider">&gt;</span>
+      <span class="menu-btn">webcam</span>
+      <span class="divider">&gt;</span>
+      <span class="menu-btn">cosa succede?</span>
+      <span class="divider">&gt;</span>
+      <span class="menu-btn">analisi dati</span>
+    </div>
+  </div>
+
+  <!-- INFO LATERALE -->
+  <div class="side-info">
+    <h1 id="side-title">I miei colori</h1>
+    <p>Michelle Puttini</p>
+    <p>Interaction Design</p>
+    <p>AA 2024 / 2025</p>
+  </div>
+
+  <!-- NAV BOTTOM -->
+  <div class="bottom-nav" id="bottomNav">
+    <button class="btn-style btn-indietro">&lt;</button>
+    <button class="btn-style btn-avanti">Avanti &gt;</button>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section section-intro active">
+    <h1>Il progetto</h1>
+<p>
+  Questo progetto nasce da un archivio fotografico piccolo: poco più di 600 immagini.  
+  Ho deciso di analizzarlo attraverso uno degli elementi più semplici da misurare — il colore.<br><br>
+  Il colore è spesso un dato accessorio nell’analisi visiva, ma se osservato con attenzione  
+  diventa un filtro efficace per capire che cosa c’è (o non c’è) in una serie di immagini.<br><br>
+  Alla fine, un archivio povero e un parametro minimo come il colore sono bastati  
+  per far emergere informazioni interessanti — più di quanto immaginassi.
+</p>
+    <button class="btn-style btn-avanti">Inizia</button>
+  </section>
+
+  <!-- WEBCAM -->
+  <section class="section section-webcam">
+    <h1>Te tramite me</h1>
+<p>
+  L’analisi è iniziata in modo semplice: attivando la webcam e cercando di ricostruire il mio volto con le immagini del mio archivio. Ogni fotogramma viene suddiviso in celle di grandi dimensioni, e per ciascuna viene selezionata la fotografia il cui colore medio è più simile. Il risultato è un mosaico che, pur senza mostrare i dettagli, restituisce una forma riconoscibile.<br><br>
+  Separare la visualizzazione “Average Color” da “Average Color 3” ha fatto emergere la varietà cromatica nascosta in immagini apparentemente uniformi: tre colori bastano per restituire grandi variazioni. Questo gioco iniziale è stato il punto di partenza per analizzare davvero il mio archivio.<br><br>
+  Prova ad attivare la cam e mostra i tuoi colori!
+</p>
+
+<div class="canvas-row large">
+      <div class="canvas-box">
+        <div class="video-wrapper">
+          <button id="startWebcamBtn" class="btn-style center">Attiva webcam</button>
+          <video id="webcam" autoplay muted playsinline style="display: none;"></video>
+        </div>
+      </div>
+      <div class="canvas-box">
+        <div class="canvas-wrapper">
+          <canvas id="mosaicCanvas"></canvas>
+          <p id="waitingText" class="center">Accenti la webcam per creare il mosaico</p>
+        </div>
+      </div>
+    </div>
+
+<div class="mode-switch" id="webcamModeSwitch">
+  <button class= "mode-btn" data-mode="mosaic">Mosaico</button>
+  <button class= "mode-btn" data-mode="color1">Colore Medio</button>
+  <button class= "mode-btn" data-mode="color3">3 Colori Medi</button>
+</div>
+    <div class="footer-spacer"></div>
+
+</section>
+
+  <!-- CHE SUCCEDE -->
+  <section class="section section-spiegazione">
+    <h1>Che succede?</h1>
+
+<p>
+  Dai, ti spiego tecnicamente cosa succede: per ogni porzione dell'immagine, viene calcolato il colore medio. A quel punto, l’algoritmo cerca nell’archivio l’immagine con un colore simile e la usa per ricomporre il mosaico. A seconda della modalità selezionata, può mostrare l’immagine intera, un solo colore, oppure tre colori dominanti.
+</p>
+
+<p><b>Mosaico</b><br>
+  Ogni cella viene confrontata con il colore medio delle immagini dell’archivio. La più simile viene selezionata e visualizzata nel mosaico. I tasselli sono ruotati di 90° per accentuarne la natura modulare.
+</p>
+
+<p><b>Average Color</b><br>
+  Ogni cella viene riempita direttamente con il colore medio dell’immagine più simile. Le immagini non vengono usate: solo il dato cromatico viene visualizzato.
+</p>
+
+<p><b>Average Color 3</b><br>
+  Ogni immagine dell’archivio è stata ridotta ai suoi tre colori più rappresentativi. I blocchi mostrano queste triplette cromatiche, rivelando una maggiore varietà e profondità.
+</p>
+
+<p>
+<p><b>Visualizzazione della palette</b><br>
+  Qui sotto trovi la visualizzazione completa dell’archivio: per ognuna delle 607 immagini vedi la miniatura originale, il suo colore medio e i tre colori principali. È una tabella visiva che ti permette di esplorare l’intera palette del mio archivio a colpo d’occhio.<br><br>
+  Anche se l’Atlas è volutamente molto pixelato — quindi non si possono distinguere chiaramente i soggetti — si iniziano a notare delle ricorrenze. Alcuni colori compaiono più spesso, altri sono vere e proprie eccezioni. Il viola elettrico, ad esempio, è presente solo in poche immagini con luci LED scattate al buio. Sono proprio questi picchi cromatici che indicano foto più particolari, fuori dallo schema. In questo modo si può provare a intuire, partendo solo dal colore, quali immagini si distinguono davvero dalle altre.
+</p>
+    <div class="color-grid-comparativa" id="comparativeGrid"></div>
+    <div class="footer-spacer"></div>
+  </section>
+
+  <!-- ANALISI DATI -->
+  <section id="section-analisi" class="section">
+    <div class="section-wrapper">
+      <h1>Analizziamo la palette</h1>
+      <p>
+        In questa sezione analizziamo visivamente la palette ottenuta dal nostro archivio fotografico.
+        Ogni punto rappresenta un colore medio calcolato: la posizione dipende dalla sua saturazione (asse X)
+        e dalla sua luminosità (asse Y).
+      </p>
+
+      <div id="canvasContainer">
+        <canvas id="saturationLightnessCanvas" width="1200" height="800"></canvas>
+
+        <div class="canvas-buttons left">
+          <button class="btn-style" id="filtro-tutti">Tutti</button>
+          <button class="btn-style" id="filtro-rosso">Rosso</button>
+          <button class="btn-style" id="filtro-verde">Verde</button>
+          <button class="btn-style" id="filtro-blu">Blu</button>
+        </div>
+        <div class="canvas-buttons right">
+          <button class="btn-style" id="zoom-in">+</button>
+          <button class="btn-style" id="zoom-out">−</button>
+          <button class="btn-style" id="reset-chart">Reset</button>
+        </div>
+
+        <p id="colorCount" class="canvas-count">Colori mostrati: 1815</p>
+      </div>
+
+      <div class="analisi-conclusione">
+        <h2>Conclusione</h2>
+<p>
+  L’analisi visiva dei colori medi conferma un aspetto chiave del mio archivio fotografico: la prevalenza di tonalità realistiche, poco sature e tendenti a luminosità medie.<br>
+  Questo riflette perfettamente il mio modo di fotografare, centrato su ritratti personali, ambienti domestici, esperienze quotidiane e momenti intimi.<br><br>
+  I colori vivaci, artificiali o fortemente saturi sono estremamente rari, perché non fanno parte della mia narrazione visiva.<br>
+  Il mio occhio si orienta verso texture naturali, toni caldi e morbidi, pelle, tessuti, luce soffusa e contrasti delicati.<br><br>
+  Non è una scelta consapevole ma il risultato di un’abitudine visiva.<br>
+  L’assenza di colori accesi — come blu elettrici, verdi brillanti o gialli artificiali — indica che non fotografo paesaggi, cieli, mare o oggetti artificiali come insegne, led o cartelli.<br>
+  Al contrario, la ricorrenza di beige, rosa pelle, marroni e grigi suggerisce un’attenzione costante verso ritratti e ambienti quotidiani.<br><br>
+  Questa palette mostra con chiarezza il tipo di immagini che scelgo di conservare: realistiche, personali, poco appariscenti — ma coerenti nel tempo.
+</p>
+      </div>
+
+      <div class="footer-spacer"></div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
