@@ -77,7 +77,7 @@ Il sito è pensato per studenti di interaction design, fotografia e comunicazion
 
 <img src="doc/screen_1.png" width="500" alt="Tabella colori – atlas" />
 <img src="doc/screen_2.png" width="500" alt="Grafico" />
-<img src="doc/screen_1.png" width="500" alt="Mosaico webcam" />
+<img src="doc/screen_3.png" width="500" alt="Mosaico webcam" />
 
 ## Interazione live nel grafico
 
